@@ -11,16 +11,8 @@ module Reform::Form::Mongoid
   end
 
   module ClassMethods
-    def validates_uniqueness_of(attribute, options={})
-      options = options.merge(:attributes => [attribute])
-      validates_with(UniquenessValidator, options)
-    end
     def i18n_scope
       :mongoid
     end
-  end
-
-  UniquenessValidator = Class.new("::Mongoid::Validatable::UniquenessValidator".constantize) do
-    include Reform::Form::ORM::UniquenessValidator
   end
 end
